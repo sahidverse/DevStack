@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import HeroBanner from "./component/HeroBanner";
 import Nav from "./component/Nav";
 import Technologies from "./component/Technologies";
+import Footer from "./component/Footer.tsx";
 import type { Iplayer } from "./component/playerTypes.tsx";
 
 const playersFetch = async (): Promise<Iplayer[]> => {
@@ -20,6 +21,7 @@ function App() {
       <Suspense fallback={ <h2>Loading...</h2> }>
         <Technologies playersPromise={playersPromise} />
       </Suspense>
+      <Footer />
     </>
   );
 }
