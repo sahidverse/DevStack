@@ -2,7 +2,7 @@ import React from 'react';
 import logo from '../assets/logo-text.png'
 const Nav = () => {
     return (
-        <div className=' sticky top-0 flex justify-between container mx-auto py-2'>
+        <div className='bg-white sticky top-0 flex justify-between container mx-auto py-1'>
              <img src={logo} className='h-[32] w-[136] ' alt="logo img" />
 
             <ul className='flex gap-3 text-xs my-auto '>
