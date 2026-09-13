@@ -9,6 +9,7 @@ interface TechnologiesProps {
 const Technologies = ({ playersPromise }: TechnologiesProps) => {
   const technologies = use(playersPromise);
   const [stack, setStack] = useState<Iplayer[]>([]);
+  const [toast, setToast] = useState<string | null>(null);
 
 
 
@@ -18,6 +19,8 @@ const Technologies = ({ playersPromise }: TechnologiesProps) => {
       return;
     }
     setStack((currentStack) => [...currentStack, technology]);
+    setToast(`${technology.name} added to your stack.`);
+    window.setTimeout(() => setToast(null), 3000);
   };
 
 
@@ -30,7 +33,15 @@ const Technologies = ({ playersPromise }: TechnologiesProps) => {
   };
 
   return (
-    <section className="container mx-auto px-6 pb-16">
+    <>
+      {toast && (
+        <div className="toast toast-top toast-end z-50">
+          <div className="alert alert-success">
+            <span>{toast}</span>
+          </div>
+        </div>
+      )}
+      <section className="container mx-auto px-6 pb-16">
       <h1 className="text-2xl font-bold text-slate-900">
         Explore the <span className="bg-linear-to-r from-[#FF5722] to-[#7C3AED] bg-clip-text text-transparent">Technologies</span>
       </h1>
@@ -110,7 +121,8 @@ const Technologies = ({ playersPromise }: TechnologiesProps) => {
           )}
         </aside>
       </div>
-    </section>
+      </section>
+    </>
   );
 };
 
