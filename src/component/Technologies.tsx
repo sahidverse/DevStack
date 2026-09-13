@@ -5,18 +5,25 @@ interface TechnologiesProps {
   playersPromise: Promise<Iplayer[]>;
 }
 
+
 const Technologies = ({ playersPromise }: TechnologiesProps) => {
   const technologies = use(playersPromise);
   const [stack, setStack] = useState<Iplayer[]>([]);
+
+
 
   const addToStack = (technology: Iplayer) => {
     if (stack.some((item) => item.id === technology.id)) {
       window.alert(`${technology.name} is already in your stack.`);
       return;
     }
-
     setStack((currentStack) => [...currentStack, technology]);
   };
+
+
+
+
+
 
   const removeFromStack = (technologyId: string) => {
     setStack((currentStack) => currentStack.filter((item) => item.id !== technologyId));
@@ -30,6 +37,7 @@ const Technologies = ({ playersPromise }: TechnologiesProps) => {
       <p className="mt-1 max-w-xl text-sm text-gray-600">
         Pick one technology per category to build your ideal stack.
       </p>
+
 
       <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1fr)_250px]">
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -61,6 +69,9 @@ const Technologies = ({ playersPromise }: TechnologiesProps) => {
           })}
         </div>
 
+
+
+
         <aside className="h-fit rounded-xl border border-slate-200 bg-white p-4 shadow-sm lg:sticky lg:top-20">
           <div className="flex items-start justify-between gap-3">
             <div>
@@ -75,6 +86,9 @@ const Technologies = ({ playersPromise }: TechnologiesProps) => {
               </button>
             )}
           </div>
+
+
+
 
           {stack.length === 0 ? (
             <p className="mt-5 rounded-lg border border-dashed border-slate-200 p-5 text-center text-xs text-slate-400">Your stack is empty.</p>
@@ -99,5 +113,7 @@ const Technologies = ({ playersPromise }: TechnologiesProps) => {
     </section>
   );
 };
+
+
 
 export default Technologies;
